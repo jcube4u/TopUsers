@@ -11,7 +11,7 @@ import SwiftUI
 struct TopUsersApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootViewCoordinator()
         }
     }
 }
