@@ -14,7 +14,6 @@ struct TopUsersView: View {
     @State var viewModel =  TopUsersViewModel(dataService: TopUsersDataService())
     var body: some View {
         VStack {
-            
             switch viewModel.state {
                 case .notIntiated:
                 ContentUnavailableView("Data not available", image: "exclamationmark.cloud.fill")
@@ -33,9 +32,7 @@ struct TopUsersView: View {
                             TopUserRowView(user: user)
                                 .frame(height: 100)
                         }
-                
             }
-       
         }
         .onAppear(perform: {
             Task { await viewModel.fetchUsers() }

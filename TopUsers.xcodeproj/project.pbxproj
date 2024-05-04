@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		878F69B12BE6424800054360 /* TopUserRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878F69B02BE6424800054360 /* TopUserRowView.swift */; };
+		878F69B32BE6AA5900054360 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878F69B22BE6AA5900054360 /* ProfileImageView.swift */; };
 		87D0C1722BE5070000F117EA /* RootViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0C1712BE5070000F117EA /* RootViewCoordinator.swift */; };
 		87D0C1742BE50F6800F117EA /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0C1732BE50F6800F117EA /* RootViewModel.swift */; };
 		87D0C1762BE5122600F117EA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0C1752BE5122600F117EA /* Constants.swift */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		878F69B02BE6424800054360 /* TopUserRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUserRowView.swift; sourceTree = "<group>"; };
+		878F69B22BE6AA5900054360 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
 		87D0C1712BE5070000F117EA /* RootViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewCoordinator.swift; sourceTree = "<group>"; };
 		87D0C1732BE50F6800F117EA /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		87D0C1752BE5122600F117EA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				87D0C17E2BE5143A00F117EA /* TopUsersView.swift */,
 				87D0C18C2BE580E900F117EA /* TopUsersViewModel.swift */,
 				87D0C1902BE591A000F117EA /* FollowerView.swift */,
+				878F69B22BE6AA5900054360 /* ProfileImageView.swift */,
 			);
 			path = TopUsers;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				87D0C18B2BE5803F00F117EA /* DataServiceError.swift in Sources */,
 				87D0C17A2BE5137E00F117EA /* SplashView.swift in Sources */,
 				87D0C1912BE591A000F117EA /* FollowerView.swift in Sources */,
+				878F69B32BE6AA5900054360 /* ProfileImageView.swift in Sources */,
 				87D531DD2BE4EB650067CB76 /* TopUsersApp.swift in Sources */,
 				87D0C1762BE5122600F117EA /* Constants.swift in Sources */,
 			);
