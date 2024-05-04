@@ -41,7 +41,7 @@ final class RootViewModelTests: XCTestCase {
         let viewModel =  RootViewModel()
         
         //Act
-        let task = Task { @MainActor in
+        let task = Task {
             try await viewModel.start()
             return viewModel.isloadingCompleted
         }

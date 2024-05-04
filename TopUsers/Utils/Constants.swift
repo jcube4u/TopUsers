@@ -8,9 +8,16 @@
 import Foundation
 
 /**:
-    Maintain vlalues that doesnt changes   Constants .
+    Maintain list of values   .
  */
 struct Constants {
     
-    static let splashScreenDisplayPeriod =  2.5
+    /// Period of Splash display to include any animation
+    static let splashScreenDisplayPeriod = 2.5
+    
+    /// Number of user we want to fetch per requet
+    static let userListPagesize: Int = 20
+    
+    /// Stack Overflow request url to fetch list if Users
+    static let stackOverflowFetchUsersUrl =  "https://api.stackexchange.com/2.2/users?pagesize=\(userListPagesize)&order=desc&sort=reputation&site=stackoverflow"
 }
