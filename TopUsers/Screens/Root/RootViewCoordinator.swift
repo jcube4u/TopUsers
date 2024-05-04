@@ -27,7 +27,6 @@ struct RootViewCoordinator: View {
         }
         .onChange(of: rootViewModel.isloadingCompleted){
             state = .mainApp
-            
         }
     }
     

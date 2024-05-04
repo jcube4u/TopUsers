@@ -44,6 +44,5 @@ class RootViewModel {
                 
         try? await Task.sleep(for: .seconds(displayPeriodInSecs))
         loadingCompleted = true
-        print("Now \(loadingCompleted)")
     }
 }
