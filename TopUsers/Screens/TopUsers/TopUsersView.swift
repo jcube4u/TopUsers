@@ -11,7 +11,11 @@ import SwiftUI
     Display Content based in View State that is managed in the ViewModel
  */
 struct TopUsersView: View {
-    @State var viewModel =  TopUsersViewModel(dataService: TopUsersDataService())
+    var viewModel: TopUsersViewModel
+    
+    init(dataService: DataServiceProtocol){
+        viewModel = TopUsersViewModel(dataService: dataService)
+    }
     var body: some View {
         VStack {
             switch viewModel.state {
@@ -31,9 +35,11 @@ struct TopUsersView: View {
                     List(topusers, id: \.userId) { user in
                             TopUserRowView(user: user)
                                 .frame(height: 100)
-                        }
+                    }
+                    
             }
         }
+        .animation(.easeIn, value: 8)
         .onAppear(perform: {
             Task { await viewModel.fetchUsers() }
         })
@@ -43,5 +49,10 @@ struct TopUsersView: View {
 
 
 #Preview {
-    TopUsersView()
+    
+    /// Use to hit the network for real data
+    //TopUsersView(dataService: TopUsersDataService())
+    
+    /// Mock data Service
+    TopUsersView(dataService: MockDataService())
 }

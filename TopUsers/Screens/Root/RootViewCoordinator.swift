@@ -22,7 +22,7 @@ struct RootViewCoordinator: View {
                             appStart()
                         }
                 case .mainApp:
-                    TopUsersView()
+                    TopUsersView(dataService: TopUsersDataService())
             }
         }
         .onChange(of: rootViewModel.isloadingCompleted){

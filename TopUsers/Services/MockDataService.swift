@@ -6,7 +6,6 @@
 //
 
 import Foundation
-@testable import TopUsers
 
 struct MockDataService: DataServiceProtocol {
     func fetchUsers(url: String) async throws -> [User] {
@@ -17,5 +16,4 @@ struct MockDataService: DataServiceProtocol {
                                 location: "Windsor Castle, UK")
         return [user]
     }
-
 }
