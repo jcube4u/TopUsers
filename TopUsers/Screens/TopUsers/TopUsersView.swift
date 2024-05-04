@@ -18,9 +18,11 @@ struct TopUsersView: View {
     }
     var body: some View {
         VStack {
+            HeaderView(title:"Top Stack")
+            Spacer()
             switch viewModel.state {
-                case .notIntiated:
-                ContentUnavailableView("Data not available", image: "exclamationmark.cloud.fill")
+                case .notInitiated:
+                    EmptyView()
                 case.loading:
                     ZStack {
                         Color.gray
@@ -28,15 +30,23 @@ struct TopUsersView: View {
                     }.frame(width: 100, height: 100)
                         .clipShape(RoundedRectangle(cornerRadius:  25.0))
                         
-                case .noData:
-                    ContentUnavailableView("Data not available", image: "exclamationmark.cloud.fill")
-                        
-                case let .topUsers(results: topusers):
-                    List(topusers, id: \.userId) { user in
-                            TopUserRowView(user: user)
-                                .frame(height: 100)
+                case .noData:                
+                    ContentUnavailableView {
+                        Label("No Data Available", systemImage: "doc.richtext.fill")
+                    } description: {
+                        Text("Try again bit later.") 
                     }
-                    
+                            
+                case let .topUsers(results: topusers):
+                    ScrollView {
+                        ForEach(topusers, id: \.userId) { user in
+                            TopUserRowView(user: user)
+                                  .frame(height: 100)
+
+                        }
+                    }
+                    .padding(.horizontal,10)
+                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
             }
         }
         .animation(.easeIn, value: 8)
@@ -50,9 +60,13 @@ struct TopUsersView: View {
 
 #Preview {
     
-    /// Use to hit the network for real data
-    //TopUsersView(dataService: TopUsersDataService())
+    /// Use this  hit the network for real data
+    TopUsersView(dataService: TopUsersDataService())
     
     /// Mock data Service
-    TopUsersView(dataService: MockDataService())
+    //TopUsersView(dataService: MockDataService())
+    
+    ///  Mock data  No Service
+    //TopUsersView(dataService: MockNoDataService())
 }
+

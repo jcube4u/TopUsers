@@ -16,4 +16,5 @@ import Foundation
 enum  DataServiceError : Error {
     case invalidURL
     case httpResponseError
+    case emptyList
 }
