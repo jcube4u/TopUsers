@@ -22,9 +22,18 @@ struct StandardButtonStyle: ButtonStyle {
 }
 
 
+
+
 #Preview {
-    Button("Helloow") {
+    VStack {
+        Button("Helloow") {
+            
+        }
+        .buttonStyle(StandardButtonStyle())
         
+        Button("Helloow") {
+            
+        }
+        .buttonStyle(FollowingButtonStyle(isEnabled: true))
     }
-    .buttonStyle(StandardButtonStyle())
 }

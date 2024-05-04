@@ -11,6 +11,8 @@ import SwiftUI
  */
 extension Color {
     static let primaryNavyBlue = fromHexString("#144580")
+    static let primarylightGreen = fromHexString("#CEFAD0")
+    
     static let offWhite = fromHexString("#FFFFCC")
     
     static func fromHexString(_ hex:String) -> Color {
