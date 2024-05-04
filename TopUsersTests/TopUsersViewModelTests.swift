@@ -32,13 +32,23 @@ final class TopUsersViewModelTests: XCTestCase {
     }
     
    
-    func test_TopUsersViewModel_init_appState_isNoData() throws {
+    func test_TopUsersViewModel_init_appState_isNotInitated() throws {
         guard let viewModel else {
             XCTFail()
             return
         }
         
-        XCTAssertEqual(viewModel.viewState, .noData)
+        XCTAssertEqual(viewModel.viewState, .notIntiated)
+    }
+    
+    func test_TopUsersViewModel_fetchUsers_returns_validData()  async throws {
+        
+        guard let viewModel else {
+            XCTFail()
+            return
+        }
+        let users = await viewModel.fetchUsers()
+        XCTAssertTrue(users.count > 0)
     }
 }
 
