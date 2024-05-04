@@ -15,24 +15,9 @@ struct FollowerView: View {
         Button(text) {
             isSelected.toggle()
         }
-        .buttonStyle(StandardButton())
+        .buttonStyle(StandardButtonStyle())
     }
 }
-
-struct StandardButton: ButtonStyle {
-
-    func makeBody(configuration: Configuration) -> some View {
-        
-        configuration.label
-            .font(.caption2)
-            .foregroundColor(.white)
-            .padding()
-            .background(Color.primaryNavyBlue)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-        
-    }
-}
-
 
 #Preview {
     FollowerView()

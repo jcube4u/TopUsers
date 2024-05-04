@@ -30,6 +30,9 @@ struct RootViewCoordinator: View {
         }
     }
     
+    /**:
+         Initiate loading of the app here
+     */
     func appStart() {
         Task{ @MainActor in
             do {
