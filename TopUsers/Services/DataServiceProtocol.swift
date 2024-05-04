@@ -14,6 +14,6 @@ import Foundation
 ///
 /// - Throws: DataServiceError
 protocol  DataServiceProtocol {
-    func fetchUsers(url: String) async throws -> TopUsers
+    func fetchUsers(url: String) async throws -> [User]
 }
 
