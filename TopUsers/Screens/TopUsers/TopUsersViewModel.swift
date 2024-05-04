@@ -11,7 +11,7 @@ import Foundation
  */
 enum ViewState {
     /// Starting state for the view
-    case notIntiated
+    case notInitiated
     
     ///loading state -  progressView could be presented
     case loading
@@ -33,26 +33,25 @@ extension ViewState: Equatable {
                     return true
             case (.noData,.noData):
                 return true
+            case (.notInitiated,.notInitiated):
+                return true
             case (.topUsers(let lhsType),.topUsers(let rhsType)):
                 return lhsType == rhsType
             default:
                 return false
         }
     }
-    
-    
-    
 }
 /**:
     TopUsersViewModel  to coordinate between the view and  Data
  */
 @Observable
 class TopUsersViewModel {
-//    var topUsers: TopUsers =  TopUsers(items: [])
+
     var users =  [User]()
     
     /// View state should be settable within the class
-    private(set) var state =  ViewState.notIntiated
+    private(set) var state =  ViewState.notInitiated
     
     var viewState: ViewState {
         return state
@@ -63,17 +62,27 @@ class TopUsersViewModel {
 
     init(dataService: DataServiceProtocol) {
         self.dataService = dataService
-        state =  .notIntiated
+        state =  .notInitiated
     }
     
+    /**:
+        Async func to fetch srom the service
+     */
     @MainActor
     func fetchUsers() async  -> [User] {
 
         do {
             state =  .loading
             users = try await dataService.fetchUsers(url: Constants.stackOverflowFetchUsersUrl)
+           
+            guard users.count > 0 else {
+                state = .noData
+                throw DataServiceError.emptyList
+            }
+          
             state = .topUsers(results: users)
             return users
+            
         } catch DataServiceError.httpResponseError {
             state = .noData
             print("Error  \(DataServiceError.httpResponseError)")
@@ -82,5 +91,9 @@ class TopUsersViewModel {
             print("Error  \(error)")
         }
         return []
+    }
+    
+    func followUser(user: User) {
+        print("follow \(user)")
     }
 }

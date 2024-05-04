@@ -38,7 +38,7 @@ final class TopUsersViewModelTests: XCTestCase {
             return
         }
         
-        XCTAssertEqual(viewModel.viewState, .notIntiated)
+        XCTAssertEqual(viewModel.state, ViewState.notInitiated)
     }
     
     func test_TopUsersViewModel_fetchUsers_returns_validData()  async throws {
@@ -48,7 +48,37 @@ final class TopUsersViewModelTests: XCTestCase {
             return
         }
         let users = await viewModel.fetchUsers()
-        XCTAssertTrue(users.count > 0)
+        XCTAssertTrue(users.count  == 2)
+        XCTAssertNotNil(users.first?.displayName)
+        XCTAssertNotNil(users.first?.location)
+    }
+    
+    func test_TopUsersViewModel_fetchUsers_withDataError_returns_noData()  async throws {
+        
+        let userData = [User(userId: 1234124,
+                            displayName: "Roman",
+                            reputation: 623132,
+                            profileImage: "google.com/urls/imge",
+                           location: "Windsor Castle, UK")]
+        
+        let vm  =  TopUsersViewModel(dataService: MockDataService(usersData: userData))
+        
+        let users = await vm.fetchUsers()
+   
+        XCTAssertTrue(users.count  == 1)
+        XCTAssertEqual(users.first?.displayName, "Roman")
+        XCTAssertEqual(users.first?.location, "Windsor Castle, UK")
+    }
+    
+    func test_TopUsersViewModel_fetchUsers_withDataError_returns_EmptyList()  async throws {
+        
+        
+        let vm  =  TopUsersViewModel(dataService: MockNoDataService())
+        
+        let users = await vm.fetchUsers()
+   
+        XCTAssertTrue(users.count  == 0)
+        XCTAssertEqual(vm.state, .noData)
     }
 }
 

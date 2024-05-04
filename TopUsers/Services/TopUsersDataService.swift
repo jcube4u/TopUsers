@@ -17,13 +17,16 @@ class TopUsersDataService: DataServiceProtocol {
             throw DataServiceError.invalidURL
         }
         
-        print(url)
         let urlRequest = URLRequest(url: url)
         var topusers: TopUsers = TopUsers(items: [])
         do {
-            let (data,_) = try await URLSession.shared.data(for: urlRequest)
-            
+            let (data,httpResponse) = try await URLSession.shared.data(for: urlRequest)
+            guard let response =  httpResponse as? HTTPURLResponse,
+                  response.statusCode == 200  else {
+                      throw DataServiceError.httpResponseError
+                  }
             let decoder = JSONDecoder()
+            /// data returned is in SnakeCase - Convert to Camel Case
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             topusers = try decoder.decode(TopUsers.self, from: data)
             
