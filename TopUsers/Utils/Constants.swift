@@ -16,7 +16,7 @@ struct Constants {
     static let splashScreenDisplayPeriod = 2.5
     
     /// Number of user we want to fetch per requet
-    static let userListPagesize: Int = 20
+    static let userListPagesize: Int = 5
     
     /// Stack Overflow request url to fetch list if Users
     static let stackOverflowFetchUsersUrl =  "https://api.stackexchange.com/2.2/users?pagesize=\(userListPagesize)&order=desc&sort=reputation&site=stackoverflow"
