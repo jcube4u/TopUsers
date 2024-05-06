@@ -11,6 +11,7 @@
 		871EC4042BE8787800C0C14A /* DataStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EC4032BE8787800C0C14A /* DataStorageProtocol.swift */; };
 		871EC4062BE878C900C0C14A /* UserDefaultsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EC4052BE878C900C0C14A /* UserDefaultsStore.swift */; };
 		871EC4082BE8790700C0C14A /* MockUserDefaultsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EC4072BE8790700C0C14A /* MockUserDefaultsStore.swift */; };
+		871EC40A2BE8E24900C0C14A /* FollowButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EC4092BE8E24900C0C14A /* FollowButtonStyle.swift */; };
 		878F69B12BE6424800054360 /* TopUserRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878F69B02BE6424800054360 /* TopUserRowView.swift */; };
 		878F69B32BE6AA5900054360 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878F69B22BE6AA5900054360 /* ProfileImageView.swift */; };
 		878F69B62BE6AE4200054360 /* StandardButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878F69B52BE6AE4200054360 /* StandardButtonStyle.swift */; };
@@ -62,11 +63,12 @@
 		871EC4032BE8787800C0C14A /* DataStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageProtocol.swift; sourceTree = "<group>"; };
 		871EC4052BE878C900C0C14A /* UserDefaultsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStore.swift; sourceTree = "<group>"; };
 		871EC4072BE8790700C0C14A /* MockUserDefaultsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDefaultsStore.swift; sourceTree = "<group>"; };
+		871EC4092BE8E24900C0C14A /* FollowButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowButtonStyle.swift; sourceTree = "<group>"; };
 		878F69B02BE6424800054360 /* TopUserRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUserRowView.swift; sourceTree = "<group>"; };
 		878F69B22BE6AA5900054360 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
 		878F69B52BE6AE4200054360 /* StandardButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardButtonStyle.swift; sourceTree = "<group>"; };
 		878F69B82BE6BE2F00054360 /* TopUserDataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUserDataServiceTests.swift; sourceTree = "<group>"; };
-		878F69BA2BE6F45600054360 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		878F69BA2BE6F45600054360 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HeaderView.swift; path = ../Screens/TopUsers/HeaderView.swift; sourceTree = "<group>"; };
 		878F69BC2BE7033D00054360 /* CacheManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManagerTests.swift; sourceTree = "<group>"; };
 		87D0C1712BE5070000F117EA /* RootViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewCoordinator.swift; sourceTree = "<group>"; };
 		87D0C1732BE50F6800F117EA /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				878F69B52BE6AE4200054360 /* StandardButtonStyle.swift */,
+				871EC4092BE8E24900C0C14A /* FollowButtonStyle.swift */,
 				878F69BA2BE6F45600054360 /* HeaderView.swift */,
 			);
 			path = ReusableViews;
@@ -426,6 +429,7 @@
 				878F69BB2BE6F45600054360 /* HeaderView.swift in Sources */,
 				87D0C1872BE56AA000F117EA /* TopUsers.swift in Sources */,
 				878F69B12BE6424800054360 /* TopUserRowView.swift in Sources */,
+				871EC40A2BE8E24900C0C14A /* FollowButtonStyle.swift in Sources */,
 				878F69B72BE6B30D00054360 /* MockDataService.swift in Sources */,
 				87D0C1722BE5070000F117EA /* RootViewCoordinator.swift in Sources */,
 				87D0C18D2BE580E900F117EA /* TopUsersViewModel.swift in Sources */,
