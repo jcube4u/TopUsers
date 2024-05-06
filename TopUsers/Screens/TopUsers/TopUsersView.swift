@@ -14,7 +14,7 @@ struct TopUsersView: View {
     var viewModel: TopUsersViewModel
     
     init(dataService: DataServiceProtocol){
-        viewModel = TopUsersViewModel(dataService: dataService)
+        viewModel = TopUsersViewModel(dataService: dataService, store: UserDefaultsStore())
     }
     var body: some View {
         VStack {
@@ -40,9 +40,8 @@ struct TopUsersView: View {
                 case let .topUsers(results: topusers):
                     ScrollView {
                         ForEach(topusers, id: \.userId) { user in
-                            TopUserRowView(user: user)
+                            TopUserRowView(user: user, vm: viewModel)
                                   .frame(height: 100)
-
                         }
                     }
                     .padding(.horizontal,10)

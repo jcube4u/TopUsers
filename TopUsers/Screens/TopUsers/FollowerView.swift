@@ -8,13 +8,22 @@
 import SwiftUI
 
 struct FollowerView: View {
-    @State private var isSelected =  false
+//    @Environment(TopUsersViewModel.self) var viewModel: TopUsersViewModel
+    @Bindable var user: User
+    var vm: TopUsersViewModel
+
     var body: some View {
-        let text =  !isSelected ? "Follow" :  "UnFollow"
-        Button(text) {
-            isSelected.toggle()
+        if let followed = user.isFollowed {
+            let text =  !followed ? "Follow" :  "UnFollow"
+            Button(text) {
+                user.isFollowed?.toggle()
+                vm.updateUserFollowingStatus(user: user, follow: !followed)
+                
+            }
+            .buttonStyle(FollowingButtonStyle(isEnabled: followed))
         }
-        .buttonStyle(FollowingButtonStyle(isEnabled: isSelected))
+        
+        
     }
 }
 
@@ -35,6 +44,14 @@ struct FollowingButtonStyle: ButtonStyle {
     }
 }
 
-#Preview {
-    FollowerView()
-}
+//#Preview {
+//    
+////    FollowerView(for: User(userId: 982734,
+////                        displayName: "Romeo", reputation: 1231231, profileImage: "Unknown", location: "Greenland", isFollowed: true))
+//   
+////    VStack {
+////        let vm: TopUsersViewModel = TopUsersViewModel(dataService: MockDataService())
+////        FollowerView(for: User(userId: 982734,
+////                               displayName: "Romeo", reputation: 1231231, profileImage: "Unknown", location: "Greenland", isFollowed: true)).environment(vm)
+////    }
+//}

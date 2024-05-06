@@ -57,29 +57,33 @@ class TopUsersViewModel {
         return state
     }
     
+    var cacheManager: CacheManager
+    
     /// DataService Protocol to be used as Prod or Mock for tests
     var dataService: DataServiceProtocol
 
-    init(dataService: DataServiceProtocol) {
+    init(dataService: DataServiceProtocol, store: DataStorageProtocol) {
         self.dataService = dataService
         state =  .notInitiated
+        cacheManager = CacheManager(store: store)
     }
     
     /**:
-        Async func to fetch srom the service
+        Async func to fetch data from  the service
      */
     @MainActor
     func fetchUsers() async  -> [User] {
 
         do {
             state =  .loading
-            users = try await dataService.fetchUsers(url: Constants.stackOverflowFetchUsersUrl)
+            let results = try await dataService.fetchUsers(url: Constants.stackOverflowFetchUsersUrl)
            
+            users = followedUsers(results: results)
             guard users.count > 0 else {
                 state = .noData
                 throw DataServiceError.emptyList
             }
-          
+           
             state = .topUsers(results: users)
             return users
             
@@ -93,7 +97,34 @@ class TopUsersViewModel {
         return []
     }
     
-    func followUser(user: User) {
-        print("follow \(user)")
+
+    
+    private func followedUsers(results:[User]) -> [User] {
+        
+        let followList =  cacheManager.followedUsers().compactMap({
+            Int($0)
+        })
+        let followedUsers =  results.map {
+            let user = $0
+            user.isFollowed =  followList.contains($0.userId)
+            return user
+        }
+        return followedUsers
+    }
+}
+
+extension TopUsersViewModel {
+    
+    func updateUserFollowingStatus(user: User, follow: Bool) {
+        print("follow \(user) = \(follow)")
+        if follow {
+            cacheManager.followUser(userId: String(user.userId))
+        } else {
+            cacheManager.unfollow(userId: String(user.userId))
+        }
+    }
+    
+    func isFollowing(user: User) -> Bool{
+        return cacheManager.userInFollowList(user: String(user.userId))
     }
 }
