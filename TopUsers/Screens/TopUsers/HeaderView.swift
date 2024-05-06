@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+/**:
+    Reusable  Header View
+    Configurable title
+ */
 struct HeaderView: View {
     let title: String
     var body: some View {

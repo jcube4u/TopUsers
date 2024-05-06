@@ -96,9 +96,7 @@ class TopUsersViewModel {
         }
         return []
     }
-    
 
-    
     private func followedUsers(results:[User]) -> [User] {
         
         let followList =  cacheManager.followedUsers().compactMap({
@@ -112,11 +110,12 @@ class TopUsersViewModel {
         return followedUsers
     }
 }
-
+/**:
+    TopUsersViewModel manage user following and interaction with Cache Manager
+ */
 extension TopUsersViewModel {
     
     func updateUserFollowingStatus(user: User, follow: Bool) {
-        print("follow \(user) = \(follow)")
         if follow {
             cacheManager.followUser(userId: String(user.userId))
         } else {

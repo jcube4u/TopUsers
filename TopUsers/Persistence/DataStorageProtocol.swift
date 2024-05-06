@@ -11,7 +11,6 @@ import Foundation
     DataStorageProtocol for FollowUsers,.
     using protocol allows us the swap thte concrete types as needed
  */
-
 protocol DataStorageProtocol {
     
     func saveUserData(list: [String], key: String)

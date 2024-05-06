@@ -7,7 +7,9 @@
 
 import Foundation
 
-
+/**:
+ MockUserDefaultsStore - store
+ */
 class MockUserDefaultsStore : DataStorageProtocol {
     
     var mockuserDefaults = [String]()
