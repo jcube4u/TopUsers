@@ -10,7 +10,6 @@ import SwiftUI
     TopUsersView Display the list of top 20 Stackoverflow Users.
  */
 struct TopUserRowView: View {
-    
         var user: User
         var vm: TopUsersViewModel
         var dispayName: String {

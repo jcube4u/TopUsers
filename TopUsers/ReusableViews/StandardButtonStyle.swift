@@ -7,10 +7,11 @@
 
 import SwiftUI
 
+/**:
+    StandardButtonStyle with primaryNavyBlue
+ */
 struct StandardButtonStyle: ButtonStyle {
-
     func makeBody(configuration: Configuration) -> some View {
-        
         configuration.label
             .font(.caption2)
             .foregroundColor(.white)
@@ -21,19 +22,12 @@ struct StandardButtonStyle: ButtonStyle {
     }
 }
 
-
-
-
 #Preview {
     VStack {
-        Button("Helloow") {
-            
-        }
-        .buttonStyle(StandardButtonStyle())
+        Button("Helloow") {}
+            .buttonStyle(StandardButtonStyle())
         
-        Button("Helloow") {
-            
-        }
-        .buttonStyle(FollowingButtonStyle(isEnabled: true))
+        Button("Helloow") {}
+            .buttonStyle(FollowButtonStyle(isEnabled: true))
     }
 }
