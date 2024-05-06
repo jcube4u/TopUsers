@@ -6,21 +6,21 @@
 
  ## Usage
    The App uses 
-    - Async /Await to make netwrok calls
+    - Async /Await to make network calls
     - Async Image to cache image
     - Observation framework to allow the Binding of of Data with the View
+    - Dependency Injection used with protocols allowing easy swapping of types
 
  ## Architectures
- App uses MMVVM architecture pattern to seperate out the View from Data making the app easier to maintain and seperation of responsibilites.
+  App uses MMVVM architecture pattern to separate out the View from Data making the app easier to maintain and seperation of responsibilites.
 
  ## Details
   - Fetch Top users from Stackoverflow 
-  - [] Cache of Follow List in UserDefaults
+  - Cache of Follow List in UserDefaults. Sync data after fetching the top uses from the  StackOverflow
   - Network Error Handling and Display e.g Correct message when there is no internet connection.
 
 
  ## Testing
-  - [] Unit tests for ViewModels
-  - [] UI Testing
+  - Unit tests coverage for View Models, Data Managers and others with Mocks
 
    
