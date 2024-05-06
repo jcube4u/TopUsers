@@ -17,9 +17,10 @@ struct TopUsersView: View {
         viewModel = TopUsersViewModel(dataService: dataService, store: UserDefaultsStore())
     }
     var body: some View {
-        VStack {
+        VStack(alignment: .center) {
             HeaderView(title:"Top Stack")
             Spacer()
+            
             switch viewModel.state {
                 case .notInitiated:
                     EmptyView()
@@ -47,6 +48,7 @@ struct TopUsersView: View {
                     .padding(.horizontal,10)
                     .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
             }
+            Spacer()
         }
         .animation(.easeIn, value: 8)
         .onAppear(perform: {
