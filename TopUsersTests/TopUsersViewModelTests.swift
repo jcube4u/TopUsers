@@ -13,7 +13,7 @@ final class TopUsersViewModelTests: XCTestCase {
     var viewModel: TopUsersViewModel?
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        viewModel =  TopUsersViewModel(dataService: MockDataService())
+        viewModel =  TopUsersViewModel(dataService: MockDataService(), store: MockUserDefaultsStore())
     }
 
     override func tearDownWithError() throws {
@@ -61,7 +61,7 @@ final class TopUsersViewModelTests: XCTestCase {
                             profileImage: "google.com/urls/imge",
                            location: "Windsor Castle, UK")]
         
-        let vm  =  TopUsersViewModel(dataService: MockDataService(usersData: userData))
+        let vm  =  TopUsersViewModel(dataService: MockDataService(usersData: userData), store: MockUserDefaultsStore())
         
         let users = await vm.fetchUsers()
    
@@ -73,7 +73,7 @@ final class TopUsersViewModelTests: XCTestCase {
     func test_TopUsersViewModel_fetchUsers_withDataError_returns_EmptyList()  async throws {
         
         
-        let vm  =  TopUsersViewModel(dataService: MockNoDataService())
+        let vm  =  TopUsersViewModel(dataService: MockNoDataService(), store: MockUserDefaultsStore())
         
         let users = await vm.fetchUsers()
    
